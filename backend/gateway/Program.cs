@@ -16,11 +16,7 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
-
-// DEEZ NUTS
 // Hello World
-
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
