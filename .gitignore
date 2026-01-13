@@ -26,5 +26,5 @@ yarn-error.log*
 # backend
 /backend/bin
 /backend/obj
-appsettings.development.json
-appsettings.json
+/backend/appsettings.development.json
+/backend/appsettings.json
