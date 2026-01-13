@@ -31,10 +31,10 @@ async function saveUser(user) {
   await axios.post(`${API_BASE_URL}/api/users`, {
     auth0Id: user.sub,
     email: user.email,
-    email_verified: user.email_verified,
+    emailVerified: user.email_verified,
     nickname: user.nickname,
     name: user.name,
-    picture: user.picture,
-    updated_at: user.updated_at
+    imageUrl: user.picture,
+    updatedAt: user.updated_at
   });
 }

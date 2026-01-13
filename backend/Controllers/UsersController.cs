@@ -21,7 +21,11 @@ namespace Backend.Controllers
             var existing = await _userService.GetUserByAuth0Id(user.Auth0Id);
             if (existing != null) return Conflict("User already exists");
 
+            Console.WriteLine(existing);
+
             var createdUser = await _userService.CreateUserAsync(user);
+            Console.WriteLine(createdUser);
+
             return Ok(createdUser);
         }
     }
