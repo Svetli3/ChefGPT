@@ -1,5 +1,6 @@
 import React from 'react'
-import Typography from '@mui/material/Typography'
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
 
 export const PromptPage = ({user}) => {
   const userInfo = Object.entries(user).map(([key, value]) => (
@@ -14,9 +15,7 @@ export const PromptPage = ({user}) => {
         Prompt Page
       </Typography>
 
-      <Typography variant="body1">
-        {userInfo}
-      </Typography>
+      <Grid container spacing={2}>{userInfo}</Grid>
     </>
   )
 }

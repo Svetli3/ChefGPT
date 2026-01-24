@@ -10,10 +10,10 @@ import "./styling/global/App.css";
 function App() {
   const { isLoading, error, isAuthenticated, user } = useAuth0();
 
-  if (error) return <p>Authentication Error</p>;
   if (isLoading) return <CircularProgress size={40} />;
-
-
+  if (error) return <p>Authentication Error</p>;
+  
+  console.log(isAuthenticated);
   return (
     <Routes>
       <Route
