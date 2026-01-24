@@ -5,7 +5,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import CircularProgress from "@mui/material/CircularProgress";
 import LoginPage from "./pages/login/LoginPage";
-import PromptPage from "./pages/prompt/PromptPage";
 import Callback from "./pages/auth/Callback";
 
 import "./styling/global/App.css";
