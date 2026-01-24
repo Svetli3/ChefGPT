@@ -18,15 +18,17 @@ namespace Backend.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] User user)
         {
-            var existing = await _userService.GetUserByAuth0Id(user.Auth0Id);
-            if (existing != null) return Conflict("User already exists");
+            try {
+                var existing = await _userService.GetUserByAuth0Id(user.Auth0Id);
+                if (existing == null) {
+                    await _userService.CreateUserAsync(user);
+                } 
 
-            Console.WriteLine(existing);
-
-            var createdUser = await _userService.CreateUserAsync(user);
-            Console.WriteLine(createdUser);
-
-            return Ok(createdUser);
+                return Ok();
+            }
+            catch(Exception e) {
+                return BadRequest(e.Message);
+            }
         }
     }
 }

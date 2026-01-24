@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+#cache
+/node_modules/.cache
+
 # testing
 /coverage
 
@@ -26,5 +29,4 @@ yarn-error.log*
 # backend
 /backend/bin
 /backend/obj
-/backend/appsettings.development.json
-/backend/appsettings.json
+/backend/appsettings*.json

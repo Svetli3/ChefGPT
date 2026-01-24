@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react';
 import Button from '@mui/material/Button';
 
+const callbackUrl = process.env.REACT_APP_AUTH0_CALLBACK_URL;
 
 const LoginButton = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
@@ -27,7 +28,10 @@ const LoginButton = () => {
                 md: "16px 32px",
               },
             }} 
-            onClick={() => loginWithRedirect()}>Sign In</Button>
+            onClick={() => loginWithRedirect({
+              redirectUri: callbackUrl,
+              // appState: {target: '/callback', returnTo: callbackUrl}
+            })}>Sign In</Button>
         )
   )
 }
