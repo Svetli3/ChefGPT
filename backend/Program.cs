@@ -4,6 +4,7 @@ using Backend.Data;
 using Backend.Services;
 using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Scalar.AspNetCore;
 
 Env.Load();
 
@@ -26,6 +27,12 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<AIService>();
+builder.Services.AddHttpClient<AIService>(); // Gives the service a "phone"
+builder.Services.AddScoped<AIService>();  
+
+builder.Services.AddOpenApi();
+
 
 // CORS
 builder.Services.AddCors(options =>

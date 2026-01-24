@@ -1,3 +1,6 @@
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/home/HomePage";
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -37,7 +40,8 @@ function App() {
       <Route
         path="/prompt"
         element={
-          isAuthenticated ? <PromptPage user={user} /> : <Navigate to="/login" replace />
+          isAuthenticated ? 
+          <MainLayout user={user}><HomePage/></MainLayout> : <Navigate to="/login" replace />
         }
       />
 
