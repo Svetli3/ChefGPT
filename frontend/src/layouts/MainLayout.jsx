@@ -1,12 +1,12 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-function MainLayout({ children }) {
+function MainLayout({ children, user }) {
   return (
     <div className="flex flex-col min-h-screen">
 
       {/* Header at top */}
-      <Header />
+      <Header user={user}/>
 
       {/* Main content fills remaining space and centers children */}
       <main className="flex-1 flex items-center justify-center">
