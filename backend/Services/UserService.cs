@@ -20,6 +20,9 @@ namespace Backend.Services
             return user;
         }
 
+        public async Task<User?> GetUserByEmail(string email) =>
+            await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+
         public async Task<User?> GetUserByAuth0Id(string auth0Id) =>
             await _context.Users.FirstOrDefaultAsync(u => u.Auth0Id == auth0Id);
     }

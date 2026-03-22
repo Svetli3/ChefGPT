@@ -1,14 +1,17 @@
 using System.Net.Http.Json;
+using Backend.Settings;
 
 namespace Backend.Services
 {
     public class AIService
     {
         private readonly HttpClient _http;
+        private readonly string _ollamaApiUrl;
 
         public AIService(HttpClient http)
         {
             _http = http;
+            this._ollamaApiUrl = Environment.GetEnvironmentVariable("OLLAMA_API_URL") ?? "http://localhost:11434";
         }
 
         public async Task<string> GetRecipeAsync(string userInput)
@@ -16,15 +19,15 @@ namespace Backend.Services
 
             var requestBody = new
             {
-                model = "gemma3:4b", 
-                system = "You are an AI for a recipe website please give the recipe they ask for along with calories and cooking time please give as simple instructions as possible, any non recipe related questions should be ignored and ask the user to give you a recipe related question, alos just give the recipe dont use more words then you need too put the title at the very top of your reply",
-                prompt = $"Give me a simple recipe for: {userInput}",
+                model = Settings.AppSettings.AI_MODEL, 
+                system = Settings.AppSettings.AI_SYSTEM,
+                prompt = Settings.AppSettings.AI_PROMPT + userInput,
                 stream = false,
                 options = new { temperature = 0.3 } // how much chefgpt follows the rules
             };
 
 
-            var response = await _http.PostAsJsonAsync("http://localhost:11434/api/generate", requestBody);
+            var response = await _http.PostAsJsonAsync($"{_ollamaApiUrl}/api/generate", requestBody);
 
 
             if (response.IsSuccessStatusCode)
