@@ -30,5 +30,17 @@ namespace Backend.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            try
+            {
+                return Ok(await _userService.GetUserByEmail(email));
+            } catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

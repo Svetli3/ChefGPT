@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Plus, CornerUpLeft, Calculator } from "lucide-react";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Home() {
   const [inputValue, setInputValue] = useState("");
   const [messages, setMessages] = useState([
@@ -26,7 +28,7 @@ function Home() {
     setInputValue(""); 
 
     try {
-      const response = await fetch("http://localhost:5000/api/recipe", {
+      const response = await fetch(`${API_URL}/api/recipe`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userInput: currentInput }),

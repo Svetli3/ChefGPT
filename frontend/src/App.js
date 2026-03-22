@@ -8,6 +8,8 @@ import LoginPage from "./pages/login/LoginPage";
 import Callback from "./pages/auth/Callback";
 
 import "./styling/global/App.css";
+import { RecipesPage } from "./pages/recipes/RecipesPage";
+import { RecipesProvider } from "./contexts/RecipePageContext";
 
 function App() {
   const { isLoading, error, isAuthenticated, user } = useAuth0();
@@ -15,7 +17,6 @@ function App() {
   if (isLoading) return <CircularProgress size={40} />;
   if (error) return <p>Authentication Error</p>;
   
-  console.log(isAuthenticated);
   return (
     <Routes>
       <Route
@@ -41,6 +42,16 @@ function App() {
         element={
           isAuthenticated ? 
           <MainLayout user={user}><HomePage/></MainLayout> : <Navigate to="/login" replace />
+        }
+      />
+
+      <Route
+        path="/recipes"
+        element={
+          isAuthenticated ? 
+          <MainLayout user={user}>
+              <RecipesPage/>
+          </MainLayout> : <Navigate to="/login" replace />
         }
       />
 

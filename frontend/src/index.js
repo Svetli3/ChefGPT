@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import AuthProviderWithNavigate from './components/utils/AuthProviderWithNavigate';
 import App from './App';
 import "./index.css";
+import { RecipesProvider } from './contexts/RecipePageContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +12,9 @@ root.render(
     
     <BrowserRouter>
       <AuthProviderWithNavigate>
-        <App />
+          <RecipesProvider>
+            <App />
+          </RecipesProvider>
       </AuthProviderWithNavigate>
     </BrowserRouter>
     

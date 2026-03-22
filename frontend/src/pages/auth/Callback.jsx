@@ -23,13 +23,14 @@ export default function Callback() {
         const token = await getAccessTokenSilently({ audience: API_AUDIENCE });
 
         const userData = {
-          auth0Id: user.sub,
-          email: user.email,
-          emailVerified: user.email_verified,
-          nickname: user.nickname,
-          name: user.name,
-          imageUrl: user.picture,
-          updatedAt: user.updated_at
+          Id: Math.floor(Math.random() * 10000),
+          Auth0Id: user.sub,
+          Email: user.email,
+          EmailVerified: user.email_verified,
+          Nickname: user.nickname,
+          Name: user.name,
+          ImageUrl: user.picture,
+          UpdatedAt: user.updated_at
         };
 
         await axios.post(`${API_URL}/api/users`, userData, {
